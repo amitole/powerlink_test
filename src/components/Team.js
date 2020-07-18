@@ -25,14 +25,15 @@ const Team = (props) => {
             </div>
             <div> Founded: {team.founded}</div>
             <div>
-              Officle Website: <a href={team.website}>{team.website}</a>
+              Officle Website: <Web href={team.website}>{team.website}</Web>
             </div>
             <button>
-              <Link to="/teams">Go Back</Link>
+              <StyledLink to="/teams">Back To Teams</StyledLink>
             </button>
           </Info>
           <TableContainer>
             <TableTitle>{team.team_name} Players:</TableTitle>
+            <p>Coache: {team.coaches[0].coach_name} </p>
             <Table>
               <thead>
                 <tr>
@@ -43,8 +44,8 @@ const Team = (props) => {
               <tbody>
                 {team.players.map((p) => (
                   <tr key={p.player_key}>
-                    <td>{p.player_number}</td>
-                    <td>{p.player_name}</td>
+                    <Cell>{p.player_number}</Cell>
+                    <Cell>{p.player_name}</Cell>
                   </tr>
                 ))}
               </tbody>
@@ -60,15 +61,15 @@ const Team = (props) => {
 export default Team;
 
 const Container = styled.div`
-  /* background: linear-gradient(135deg, #b3e5fc, #b3e5fc 50%, #f06292 0, #f06292); */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
+  height: 100vh;
 `;
 
 const Header = styled.div`
+  margin-top: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,29 +79,25 @@ const Header = styled.div`
 const Title = styled.h1`
   font-size: 2.5rem;
   border-bottom: 1px solid black;
-  /* margin: 0 0 2% 0; */
+`;
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 `;
 
 const Info = styled.div`
   display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-  align-items: flex-start;
-  flex-basis: 30%;
-  padding: 5%;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1%;
 `;
 
 const Img = styled.img`
   margin: 0 1%;
-`;
-
-const Main = styled.div`
-  /* background: linear-gradient(135deg, #b3e5fc, #b3e5fc 50%, #f06292 0, #f06292); */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /* align-items: center; */
-  width: 100%;
 `;
 
 const TableContainer = styled.div`
@@ -108,19 +105,31 @@ const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
 `;
 
 const Table = styled.table`
-  width: 60%;
+  width: 50%;
+  height: 80%;
   text-align: center;
-  /* padding-bottom: 5%; */
 `;
 
 const TableTitle = styled.h1`
   font-size: 1.5rem;
   width: 60%;
-  /* border-bottom: 1px solid black; */
-  text-align:center;
-  /* margin: 0 0 2% 0; */
+  text-align: center;
+`;
+
+const Cell = styled.td`
+  color: white;
+`;
+
+const Web = styled.a`
+  color: white;
+`;
+
+const StyledLink = styled(Link)`
+  color: blueviolet;
+  text-decoration: none;
+  text-align: center;
 `;

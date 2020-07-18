@@ -4,11 +4,13 @@ import styled from "styled-components";
 
 const App = () => {
   const [Info, setInfo] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true)
       const res = await fetch(
-        "https://api.jsonbin.io/b/5f118c6991806166284357f7/1",
+        "https://api.jsonbin.io/b/5f118c6991806166284357f7/3",
         {
           method: "GET",
           headers: {
@@ -20,12 +22,14 @@ const App = () => {
       const json = await res.json();
       const data = await json.result;
       setInfo(data);
+      setIsLoading(false)
     };
     getData();
   }, []);
 
   return (
     <Main>
+      
       <Routes data={Info} />
     </Main>
   );
@@ -34,10 +38,5 @@ const App = () => {
 export default App;
 
 const Main = styled.div`
-  background: linear-gradient(
-    51deg,
-    rgba(65, 219, 178, 1) 19%,
-    rgba(253, 47, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 68%
-  );
+  /* background: linear-gradient(135deg, #ffa931, #ffa931 50%, #b9ac92 0, #b9ac92); */
 `;

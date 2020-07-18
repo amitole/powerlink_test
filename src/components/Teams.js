@@ -17,12 +17,12 @@ const Teams = (props) => {
         </thead>
         <tbody>
           {props.teams.map((team) => (
-            <tr key={team.team_key}>
-              <CellName>
+            <Tr key={team.team_key}>
+              <Cell>
                 <StyledLink to={`/teams/${team.team_key}`}>
-                  {team.team_name}
+                  {team.team_name}{" "}
                 </StyledLink>
-              </CellName>
+              </Cell>
               <Cell>
                 <StyledLink to={`/teams/${team.team_key}`}>
                   {team.founded}
@@ -33,7 +33,7 @@ const Teams = (props) => {
                   {team.address}, {team.city}
                 </StyledLink>
               </Cell>
-            </tr>
+            </Tr>
           ))}
         </tbody>
       </Table>
@@ -44,7 +44,6 @@ const Teams = (props) => {
 export default Teams;
 
 const Container = styled.div`
-  /* background: linear-gradient(135deg, #b3e5fc, #b3e5fc 50%, #f06292 0, #f06292); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,40 +52,39 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3rem;
   border-bottom: 1px solid black;
   margin: 0 0 2% 0;
 `;
 
 const Headers = styled.th`
   border-bottom: 1px solid black;
+  font-size: 2rem;
 `;
+
 const HeadersName = styled.th`
   border-bottom: 1px solid black;
-  text-align: left;
+  text-align: center;
+  font-size: 2rem;
 `;
 
 const Cell = styled.td`
-  color: white;
-  margin-right: 5%;
   text-align: center;
-  font-size: 0.9rem;
-`;
-
-const CellName = styled.td`
-  color: white;
-  margin-right: 5%;
 `;
 
 const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
-  &:hover {
-    color: blueviolet;
-  }
+  text-align: center;
 `;
 
 const Table = styled.table`
   height: 80vh;
-  /* padding-bottom: 5%; */
+  width: 70%;
+`;
+
+const Tr = styled.tr`
+  &:hover {
+    background-color: blueviolet;
+  }
 `;
