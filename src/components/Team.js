@@ -27,9 +27,9 @@ const Team = (props) => {
             <div>
               Officle Website: <Web href={team.website}>{team.website}</Web>
             </div>
-            <button>
-              <StyledLink to="/teams">Back To Teams</StyledLink>
-            </button>
+            <StyledLink to="/teams">
+              <Btn>Back To Teams</Btn>
+            </StyledLink>
           </Info>
           <TableContainer>
             <TableTitle>{team.team_name} Players:</TableTitle>
@@ -132,4 +132,8 @@ const StyledLink = styled(Link)`
   color: blueviolet;
   text-decoration: none;
   text-align: center;
+`;
+
+const Btn = styled.button`
+  color: blueviolet;
 `;
