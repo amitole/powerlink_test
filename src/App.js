@@ -11,7 +11,7 @@ const App = () => {
     const getData = async () => {
       setIsLoading(true);
       const res = await fetch(
-        "https://api.jsonbin.io/b/5f118c6991806166284357f7/3",
+        "https://api.jsonbin.io/b/5f118c6991806166284357f7/4",
         {
           method: "GET",
           headers: {
