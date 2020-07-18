@@ -13,13 +13,13 @@ const Routes = (props) => {
     return <Team {...props} team={currentTeam} />;
   };
   return (
-    <div>
+    <React.Fragment>
       <Switch>
         <Route exact path="/teams" render={() => <Teams teams={data} />} />
         <Route exact path="/teams/:id" render={getTeam} />
         <Redirect to="/teams" />
       </Switch>
-    </div>
+    </React.Fragment>
   );
 };
 

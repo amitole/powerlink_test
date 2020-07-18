@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
-
-import "./App.css";
+import styled from "styled-components";
 
 const App = () => {
   const [Info, setInfo] = useState([]);
@@ -26,10 +25,19 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <Main>
       <Routes data={Info} />
-    </div>
+    </Main>
   );
 };
 
 export default App;
+
+const Main = styled.div`
+  background: linear-gradient(
+    51deg,
+    rgba(65, 219, 178, 1) 19%,
+    rgba(253, 47, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 68%
+  );
+`;
