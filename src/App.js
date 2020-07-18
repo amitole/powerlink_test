@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
+import Loader from "./components/Loader";
 import styled from "styled-components";
 
 const App = () => {
   const [Info, setInfo] = useState([]);
-  const [isLoading,setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       const res = await fetch(
         "https://api.jsonbin.io/b/5f118c6991806166284357f7/3",
         {
@@ -22,21 +23,31 @@ const App = () => {
       const json = await res.json();
       const data = await json.result;
       setInfo(data);
-      setIsLoading(false)
+      setIsLoading(false);
     };
     getData();
   }, []);
 
-  return (
-    <Main>
-      
-      <Routes data={Info} />
-    </Main>
-  );
+  if (isLoading) {
+    return (
+      <Main>
+        <Loader />
+      </Main>
+    );
+  }
+
+  if (!isLoading) {
+    return (
+      <Main>
+        <Routes data={Info} />
+      </Main>
+    );
+  }
 };
 
 export default App;
 
 const Main = styled.div`
-  /* background: linear-gradient(135deg, #ffa931, #ffa931 50%, #b9ac92 0, #b9ac92); */
+  width: 100vw;
+  height: 100vh;
 `;
