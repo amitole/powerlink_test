@@ -5,8 +5,7 @@ import Team from "./components/Team";
 
 const Routes = (props) => {
   const { data } = props;
-
-  console.log("dataaaa: ", data);
+  
   const getTeam = (props) => {
     let id = props.match.params.id;
     let currentTeam = data.find((team) => team.team_key === id);

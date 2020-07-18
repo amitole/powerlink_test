@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Teams = (props) => {
-  console.log("props.teams", props.teams);
   return (
     <Container>
       <Title>La Liga Teams</Title>
